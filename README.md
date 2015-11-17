@@ -11,6 +11,7 @@ This repo is meant to serve as a starting point to streamline the onboarding of 
  2. Karma
  3. Mocha 
  4. Sinon
+ 5. ESLint
 
 **Configuration**
 
