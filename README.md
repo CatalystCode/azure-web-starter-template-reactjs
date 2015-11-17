@@ -25,6 +25,8 @@ This repo is meant to serve as a starting point to streamline the onboarding of 
 
 1. Bootstrap
 2. Font awesome
+3. JQuery
+4. Bootstrap Notifier
 
 **Starter Template layout**
 
