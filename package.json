@@ -1,0 +1,80 @@
+{
+  "name": "AzureWebStarterTemplateReactJS",
+  "description": "A starter template for NodeJS web applications running on Microsoft Azure, tailored for the ReactJS platform.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "./dist/js/index.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CatalystCode/Orwell"
+  },
+  "engines": {
+    "node": "= 0.10.32"
+  },
+  "maintainers": [
+    {
+      "name": "Erik Schlegel",
+      "email": "erik.schlegel@gmail.com",
+      "web": "erikschlegel.com"
+    }
+  ],
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babelify": "^6.1.3",
+    "browserify": "^11.0.1",
+    "chai": "^3.4.1",
+    "esprima-fb": "^15001.1001.0-dev-harmony-fb",
+    "express": "^4.13.3",
+    "grunt-bower-concat": "*",
+    "grunt-bower-task": "*",
+    "grunt-browserify": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-jscs": "^*",
+    "grunt-karma": "^0.12.1",
+    "jscs": "*",
+    "karma": "^0.13.15",
+    "karma-browserify": "^4.4.0",
+    "karma-jquery": "^0.1.0",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "mocha": "^2.3.3",
+    "react": "^0.14.0",
+    "react-addons-test-utils": "~0.14.0",
+    "react-dom": "0.14.0",
+    "react-router": "^1.0.0-rc4",
+    "sinon": "^1.17.2"
+  },
+  "peerDependencies": {
+    "react-dom": "0.14.0",
+    "react": "^0.14.0",
+    "react-router": "^1.0.0-rc4"
+  },
+  "dependencies": {
+    "envify": "^3.2.0",
+    "flux": "^2.1.1",
+    "history": "^1.13.0",
+    "rx": "*",
+    "rx-dom": "*"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "stage": 0
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "test": "grunt test",
+    "setup": "npm install && bower install && grunt build",
+    "server-start": "node server.js",
+    "build": "grunt build"
+  }
+}
