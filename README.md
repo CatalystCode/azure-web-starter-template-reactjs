@@ -8,16 +8,34 @@ git clone https://github.com/CatalystCode/AzureWebStarterTemplateReactJS.git
 npm run setup
 ```
 
+##### Project Build / Start
+```
+grunt build
+npm start
+```
+
 ##### Packaged Components
-**Deployment**
+
+######Deployment
  1. Azure CI via Kudu deployment scripts
+
+Azure deploy is the default continous integration agent by default, but can be changed to something like Dokku at anytime. This project comes bundled with a deploy.sh file which you should never have to touch. You can refer to the blog on how to setup deployment through the azure portal. [Azure Deployment Steps]( https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/)
  
-**Testing**
+######Testing
+
  1. PhantomJS
  2. Karma
  3. Mocha 
  4. Sinon
  5. ESLint
+ 6. React Test Utils
+
+For Test-Driven Development, open up a second command window and run 
+```
+grunt test-dev
+```
+
+The project comes bundled with a Karma test harness and PhantomJS. All JS test scripts in the /tests directory will automatically re-run when any file(s) change. 
 
 **Configuration**
 
