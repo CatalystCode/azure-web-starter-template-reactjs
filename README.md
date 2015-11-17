@@ -12,6 +12,10 @@ This repo is meant to serve as a starting point to streamline the onboarding of 
  3. Mocha 
  4. Sinon
 
+**Configuration**
+
+1. Azure Cloud Config Settings
+
 **Front-end**
 
 1. ReactJS 
