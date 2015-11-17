@@ -1,8 +1,13 @@
 # AzureWebStarterTemplateReactJS
-A starter template for NodeJS web applications running on Microsoft Azure. This is flavored for the ReactJS platform. 
+A starter template for a NodeJS web application running on Microsoft Azure. This repo is a starting point for developers that would like a production ready fullstack site running on Azure.This project is intended for web applications running on the react/flux platform, and we are working towards offering the same for Angular 2 and Ember. This is an unopinionated project, which enables developers to plugin any of there own framework or CI deployment solution. I decided to use Azure Deploy/Kudu for this project as it's the default for Azure, which is fully in your own control.  
 
-This repo is meant to serve as a starting point to streamline the onboarding of a new web application onto Azure. This project contains the following components. 
+##### Installation
+```
+git clone https://github.com/CatalystCode/AzureWebStarterTemplateReactJS.git
+npm run setup
+```
 
+##### Packaged Components
 **Deployment**
  1. Azure CI via Kudu deployment scripts
  
