@@ -1,3 +1,4 @@
+<img src="https://cloud.githubusercontent.com/assets/7635865/11227181/833d645a-8d52-11e5-96fd-d8a11d064ba3.jpg" width="200" height="100"/>
 # AzureWebStarterTemplateReactJS
 A starter template for a NodeJS web application running on Microsoft Azure. This repo is a starting point for developers that would like a production ready fullstack site running on Azure.This project is intended for web applications running on the react/flux platform, and we are working towards offering the same for Angular 2 and Ember. This is an unopinionated project, which enables developers to plugin any of there own framework or CI deployment solution. I decided to use Azure Deploy/Kudu for this project as it's the default for Azure, which is fully in your own control.  
 
