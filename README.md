@@ -45,6 +45,8 @@ This repo is meant to serve as a starting point to streamline the onboarding of 
 **Asset pipeline automation**
 
 1. grunt tasks that cover css/js minifacation, unification
+2. Browserify
+3. Babel
 
 **3rd party components**
 
