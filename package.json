@@ -72,8 +72,9 @@
     ]
   },
   "scripts": {
-    "test": "grunt test",
-    "setup": "npm install && bower install && grunt build",
+    "test": "grunt build",
+    "third-party-dependencies": "npm install -g grunt-cli && npm install bower grunt && bower install",
+    "setup": "npm install && npm install bower grunt grunt-cli && bower install && grunt build",
     "server-start": "node server.js",
     "build": "grunt build"
   }
