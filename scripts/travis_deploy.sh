@@ -8,7 +8,7 @@ git config user.email "erisch@microsoft.com"
 
 echo 'Adding files to local repo'
 ls -ltr
-git add .
+git add --all
 git commit -m "Deploy"
 
 # We redirect any output to
