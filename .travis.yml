@@ -8,6 +8,6 @@ before_script:
 deploy:
   skip_cleanup: true
   provider: script
-  script: scripts/azure_deploy.sh
+  script: bash scripts/travis_deploy.sh
   on:
     branch: master
