@@ -6,7 +6,7 @@ echo 'Setting up deployment config'
 git config user.name "Travis CI"
 git config user.email "erisch@microsoft.com"
 
-echo 'Adding files to local repo'
+echo 'Adding files to local repo '
 ls -ltr
 git add --force dist/\*.* *.html
 git commit -m "Deploy"
