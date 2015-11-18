@@ -15,5 +15,5 @@ git commit -m "Deploy"
 # /dev/null to hide any sensitive credential data that might otherwise be exposed.
 echo "About to push to ${AZURE_WA_GIT_TARGET}"
 
-git push --force "https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_GIT_TARGET}" master:master
+git push --force -v "https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_GIT_TARGET}" master:master
 echo 'Deployed!!'
