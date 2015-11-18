@@ -8,7 +8,7 @@ git config user.email "erisch@microsoft.com"
 
 echo 'Adding files to local repo '
 ls -ltr
-git add --force dist/\*.* *.html
+git add .
 git commit -m "Deploy"
 
 # We redirect any output to
