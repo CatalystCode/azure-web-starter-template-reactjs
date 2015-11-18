@@ -12,7 +12,7 @@ git config user.email "erisch@microsoft.com"
 
 echo 'Adding files to local repo '
 ls -ltr
-git add --force .
+git add .
 git commit -m "Deploy"
 
 # We redirect any output to
