@@ -7,7 +7,8 @@ git config user.name "Travis CI"
 git config user.email "erisch@microsoft.com"
 
 echo 'Adding files to local repo'
-git add .
+ls -ltr 
+git add --all
 git commit -m "Deploy"
 
 # We redirect any output to
