@@ -10,6 +10,7 @@ echo 'Adding files to local repo '
 ls -ltr
 git add .
 git commit -m "Deploy"
+git diff --stat --cached origin/master
 
 # We redirect any output to
 # /dev/null to hide any sensitive credential data that might otherwise be exposed.
