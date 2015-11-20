@@ -1,6 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports={"APPINSIGHTS_INSTRUMENTATIONKEY":"","AAD_AUTH_CLIENTID":""}
-
+module.exports={"APPINSIGHTS_INSTRUMENTATIONKEY":"96866708-f8fe-481e-97b0-ca21fb8b9a97","AAD_AUTH_CLIENTID":"af022bee-ff1c-4450-a42e-81e1782aab6d"}
 },{}],2:[function(require,module,exports){
 // shim for using process in browser
 
@@ -23425,7 +23424,7 @@ var Actions = {
 };
 exports.Actions = Actions;
 
-},{"../utils/global":220}],212:[function(require,module,exports){
+},{"../utils/global":221}],212:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -23793,7 +23792,11 @@ var _loggingAppInsight = require('./logging/appInsight');
 
 var _loggingAppInsight2 = _interopRequireDefault(_loggingAppInsight);
 
-var userProfile = window.location.host.indexOf('localhost:') == -1 ? SERVICES.getUserAuthenticationInfo() : _actionsActions.Actions.constants.DEFAULTS.USER_PROFILE;
+var _servicesServices = require('./services/services');
+
+var _servicesServices2 = _interopRequireDefault(_servicesServices);
+
+var userProfile = window.location.host.indexOf('localhost:') == -1 ? _servicesServices2['default'].getUserAuthenticationInfo() : _actionsActions.Actions.constants.DEFAULTS.USER_PROFILE;
 var history = (0, _historyLibCreateHashHistory2['default'])({
   queryKey: false
 });
@@ -23805,7 +23808,7 @@ var createElement = function createElement(Component, props) {
 _reactDom2['default'].render(_react2['default'].createElement(_reactRouter2['default'], { history: history,
   createElement: createElement }, _routesRoutes.routes), document.getElementById('app'));
 
-},{"./actions/Actions":211,"./logging/appInsight":217,"./routes/routes":219,"history/lib/createHashHistory":9,"react":210,"react-dom":28,"react-router":48}],217:[function(require,module,exports){
+},{"./actions/Actions":211,"./logging/appInsight":217,"./routes/routes":219,"./services/services":220,"history/lib/createHashHistory":9,"react":210,"react-dom":28,"react-router":48}],217:[function(require,module,exports){
 "use strict";
 
 function _interopRequireDefault(obj) {
@@ -23904,6 +23907,75 @@ var routes = _react2['default'].createElement(_reactRouter.Route, null, _react2[
 exports.routes = routes;
 
 },{"./EntryPage":218,"react":210,"react-router":48}],220:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : { "default": obj };
+}
+
+var _configJson = require('../../config.json');
+
+var _configJson2 = _interopRequireDefault(_configJson);
+
+var SERVICES = {
+    host: "https://myservice-host.net/",
+
+    sampleRestCall: function sampleRestCall(cb) {
+        $.get("{0}/test".format(this.host), cb.success).fail(cb.failure);
+    },
+
+    getUserAuthenticationInfo: function getUserAuthenticationInfo() {
+        ///Make sure the AAD client id is setup in the config
+        var userProfile = window.userProfile;
+
+        if (userProfile && userProfile.given_name) return userProfile;
+
+        if (!_configJson2["default"].AAD_AUTH_CLIENTID) throw new Error('AAD Auth Client ID config is not setup in Azure for this instance');
+
+        window.config = {
+            instance: 'https://login.microsoftonline.com/',
+            tenant: 'microsoft.com',
+            clientId: _configJson2["default"].AAD_AUTH_CLIENTID,
+            postLogoutRedirectUri: 'http://www.microsoft.com',
+            cacheLocation: 'localStorage' };
+
+        // enable this for IE, as sessionStorage does not work for localhost.
+        var authContext = new AuthenticationContext(config);
+
+        var isCallback = authContext.isCallback(window.location.hash);
+        authContext.handleWindowCallback();
+
+        if (isCallback && !authContext.getLoginError()) {
+            window.location = authContext._getItem(authContext.CONSTANTS.STORAGE.LOGIN_REQUEST);
+        }
+        // Check Login Status, Update UI
+        var user = authContext.getCachedUser();
+        if (user) {
+            var sessionId = guid();
+            // We are logged in. We're is good!
+            window.userProfile = {
+                unique_name: user.profile.upn,
+                family_name: user.profile.family_name,
+                given_name: user.profile.given_name,
+                sessionId: sessionId
+            };
+
+            appInsights.trackEvent("login", { profileId: window.userProfile.unique_name });
+
+            return window.userProfile;
+        } else {
+            // We are not logged in.  Try to login.
+            authContext.login();
+        }
+    }
+};
+exports.SERVICES = SERVICES;
+
+},{"../../config.json":1}],221:[function(require,module,exports){
 'use strict';
 
 String.prototype.format = function () {
