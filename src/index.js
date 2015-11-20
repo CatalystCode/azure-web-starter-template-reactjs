@@ -14,7 +14,7 @@ let history = createHistory({
 
 const createElement = (Component, props) => {
     return <Component {...props} />
-};
+};  
 
 ReactDOM.render((<Router history={history}
                          createElement={createElement}>
