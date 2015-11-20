@@ -5,6 +5,7 @@ import {default as Router, Route } from 'react-router'
 import {routes} from './routes/routes';
 import createHistory from 'history/lib/createHashHistory';
 import logging from './logging/appInsight';
+import SERVICES from './services/services';
 
 let userProfile = (window.location.host.indexOf('localhost:')==-1)?SERVICES.getUserAuthenticationInfo():Actions.constants.DEFAULTS.USER_PROFILE;
 let history = createHistory({
