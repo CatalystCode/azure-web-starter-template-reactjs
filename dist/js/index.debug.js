@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-module.exports={"APPINSIGHTS_INSTRUMENTATIONKEY":"96866708-f8fe-481e-97b0-ca21fb8b9a97","AAD_AUTH_CLIENTID":"af022bee-ff1c-4450-a42e-81e1782aab6d"}
+module.exports={"APPINSIGHTS_INSTRUMENTATIONKEY":"96866708-f8fe-481e-97b0-ca21fb8b9a97","AAD_AUTH_CLIENTID":"34739508-f276-40c7-9cdc-1b495c6623aa"}
 },{}],2:[function(require,module,exports){
 // shim for using process in browser
 
@@ -23934,44 +23934,46 @@ var SERVICES = {
 
         if (!_configJson2["default"].AAD_AUTH_CLIENTID) throw new Error('AAD Auth Client ID config is not setup in Azure for this instance');
 
+        console.log('AD ID: ' + _configJson2["default"].AAD_AUTH_CLIENTID);
+
         window.config = {
             instance: 'https://login.microsoftonline.com/',
             tenant: 'microsoft.com',
             clientId: _configJson2["default"].AAD_AUTH_CLIENTID,
             postLogoutRedirectUri: 'http://www.microsoft.com',
             cacheLocation: 'localStorage' };
-
-        // enable this for IE, as sessionStorage does not work for localhost.
-        var authContext = new AuthenticationContext(config);
-
-        var isCallback = authContext.isCallback(window.location.hash);
-        authContext.handleWindowCallback();
-
-        if (isCallback && !authContext.getLoginError()) {
-            window.location = authContext._getItem(authContext.CONSTANTS.STORAGE.LOGIN_REQUEST);
-        }
-        // Check Login Status, Update UI
-        var user = authContext.getCachedUser();
-        if (user) {
-            var sessionId = guid();
-            // We are logged in. We're is good!
-            window.userProfile = {
-                unique_name: user.profile.upn,
-                family_name: user.profile.family_name,
-                given_name: user.profile.given_name,
-                sessionId: sessionId
-            };
-
-            appInsights.trackEvent("login", { profileId: window.userProfile.unique_name });
-
-            return window.userProfile;
-        } else {
-            // We are not logged in.  Try to login.
-            authContext.login();
-        }
+        /*
+            let authContext = new AuthenticationContext(config);
+        
+            var isCallback = authContext.isCallback(window.location.hash);
+            authContext.handleWindowCallback();
+        
+            if (isCallback && !authContext.getLoginError()) {
+                window.location = authContext._getItem(authContext.CONSTANTS.STORAGE.LOGIN_REQUEST);
+            }
+            // Check Login Status, Update UI
+            var user = authContext.getCachedUser();
+            if (user) {
+                let sessionId = guid();
+                // We are logged in. We're is good!
+                window.userProfile = {
+                  unique_name: user.profile.upn,
+                  family_name: user.profile.family_name,
+                  given_name: user.profile.given_name,
+                  sessionId: sessionId
+                };
+        
+                appInsights.trackEvent("login", {profileId: window.userProfile.unique_name});
+        
+                return window.userProfile;
+            } else {
+                // We are not logged in.  Try to login.
+                authContext.login();
+            }*/
     }
 };
 exports.SERVICES = SERVICES;
+// enable this for IE, as sessionStorage does not work for localhost.
 
 },{"../../config.json":1}],221:[function(require,module,exports){
 'use strict';
