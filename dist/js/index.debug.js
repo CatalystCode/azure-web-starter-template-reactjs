@@ -23794,9 +23794,7 @@ var _loggingAppInsight2 = _interopRequireDefault(_loggingAppInsight);
 
 var _servicesServices = require('./services/services');
 
-var _servicesServices2 = _interopRequireDefault(_servicesServices);
-
-var userProfile = window.location.host.indexOf('localhost:') == -1 ? _servicesServices2['default'].getUserAuthenticationInfo() : _actionsActions.Actions.constants.DEFAULTS.USER_PROFILE;
+var userProfile = window.location.host.indexOf('localhost:') == -1 ? _servicesServices.SERVICES.getUserAuthenticationInfo() : _actionsActions.Actions.constants.DEFAULTS.USER_PROFILE;
 var history = (0, _historyLibCreateHashHistory2['default'])({
   queryKey: false
 });
