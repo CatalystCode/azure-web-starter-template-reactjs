@@ -23933,7 +23933,6 @@ var SERVICES = {
         if (userProfile && userProfile.given_name) return userProfile;
 
         if (!_configJson2["default"].AAD_AUTH_CLIENTID) throw new Error('AAD Auth Client ID config is not setup in Azure for this instance');
-
         console.log('AD ID: ' + _configJson2["default"].AAD_AUTH_CLIENTID);
 
         window.config = {
@@ -23942,38 +23941,38 @@ var SERVICES = {
             clientId: _configJson2["default"].AAD_AUTH_CLIENTID,
             postLogoutRedirectUri: 'http://www.microsoft.com',
             cacheLocation: 'localStorage' };
-        /*
-            let authContext = new AuthenticationContext(config);
-        
-            var isCallback = authContext.isCallback(window.location.hash);
-            authContext.handleWindowCallback();
-        
-            if (isCallback && !authContext.getLoginError()) {
-                window.location = authContext._getItem(authContext.CONSTANTS.STORAGE.LOGIN_REQUEST);
-            }
-            // Check Login Status, Update UI
-            var user = authContext.getCachedUser();
-            if (user) {
-                let sessionId = guid();
-                // We are logged in. We're is good!
-                window.userProfile = {
-                  unique_name: user.profile.upn,
-                  family_name: user.profile.family_name,
-                  given_name: user.profile.given_name,
-                  sessionId: sessionId
-                };
-        
-                appInsights.trackEvent("login", {profileId: window.userProfile.unique_name});
-        
-                return window.userProfile;
-            } else {
-                // We are not logged in.  Try to login.
-                authContext.login();
-            }*/
+
+        // enable this for IE, as sessionStorage does not work for localhost.
+        var authContext = new AuthenticationContext(config);
+
+        var isCallback = authContext.isCallback(window.location.hash);
+        authContext.handleWindowCallback();
+
+        if (isCallback && !authContext.getLoginError()) {
+            window.location = authContext._getItem(authContext.CONSTANTS.STORAGE.LOGIN_REQUEST);
+        }
+        // Check Login Status, Update UI
+        var user = authContext.getCachedUser();
+        if (user) {
+            var sessionId = guid();
+            // We are logged in. We're is good!
+            window.userProfile = {
+                unique_name: user.profile.upn,
+                family_name: user.profile.family_name,
+                given_name: user.profile.given_name,
+                sessionId: sessionId
+            };
+
+            appInsights.trackEvent("login", { profileId: window.userProfile.unique_name });
+
+            return window.userProfile;
+        } else {
+            // We are not logged in.  Try to login.
+            authContext.login();
+        }
     }
 };
 exports.SERVICES = SERVICES;
-// enable this for IE, as sessionStorage does not work for localhost.
 
 },{"../../config.json":1}],221:[function(require,module,exports){
 'use strict';
