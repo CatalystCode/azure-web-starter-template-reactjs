@@ -17,8 +17,9 @@ export const SERVICES = {
 
     if(!env_properties.AAD_AUTH_CLIENTID)
       throw new Error('AAD Auth Client ID config is not setup in Azure for this instance');
+
     console.log('AD ID: ' + env_properties.AAD_AUTH_CLIENTID);
-    
+
     window.config = {
       instance: 'https://login.microsoftonline.com/',
       tenant: 'microsoft.com',
@@ -26,7 +27,7 @@ export const SERVICES = {
       postLogoutRedirectUri: 'http://www.microsoft.com',
       cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
     };
-
+/*
     let authContext = new AuthenticationContext(config);
 
     var isCallback = authContext.isCallback(window.location.hash);
@@ -53,6 +54,6 @@ export const SERVICES = {
     } else {
         // We are not logged in.  Try to login.
         authContext.login();
-    }
+    }*/
   }
 }
