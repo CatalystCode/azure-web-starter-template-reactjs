@@ -1,12 +1,6 @@
 #!/bin/bash
 
 git init
-
-GIT_TARGET_URL="https://${AZURE_WA_USERNAME}:${AZURE_WA_PASSWORD}@${AZURE_WA_GIT_TARGET}"
-
-git remote add azure $GIT_TARGET_URL
-
-echo 'Setting up deployment config'
 git config user.name "Travis CI"
 git config user.email "erisch@microsoft.com"
 
@@ -15,9 +9,14 @@ ls -ltr
 git add .
 git commit -m "Deploy"
 
-# We redirect any output to
-# /dev/null to hide any sensitive credential data that might otherwise be exposed.
-echo "About to push to ${AZURE_WA_GIT_TARGET}"
+GIT_USERNAME="dokku"
+GIT_TARGET_URL="https://${GIT_USERNAME}@${AZURE_WA_GIT_TARGET}:${DOKKU_APPNAME}"
 
-git push --force azure master
+eval "$(ssh-agent -s)"
+chmod 600 .travis/dokku_deploy_key
+ssh-add .travis/dokku_deploy_key
+
+git remote add $GIT_USERNAME $GIT_TARGET_URL
+git push $GIT_USERNAME master
+
 echo 'Deployed!!'
