@@ -7,7 +7,12 @@ expect << EOF
   spawn ssh-add .travis/dokku_deploy_key
   expect "Enter passphrase"
   send "${DEPLOY_PASSPHRASE}\r"
+  expect eof
+EOF
+
+expect << EOF
   spawn ssh-add .travis/hostname_key
+  expect "Enter passphrase"
   send "${HOSTNAME_PASSPHRASE}\r"
   expect eof
 EOF
