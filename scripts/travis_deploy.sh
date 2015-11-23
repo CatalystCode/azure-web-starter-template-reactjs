@@ -20,8 +20,7 @@ echo 'Adding decrypted SSH private keys for deployment'
 . ./scripts/deploy_passphrase.exp
 
 echo 'Private keys added. Starting Dokku Deployment'
-. ./scripts/dokku_git_push.exp
-
 git remote add $GIT_USERNAME $GIT_TARGET_URL
+. ./scripts/dokku_git_push.exp
 
 echo 'Deployed!!'
