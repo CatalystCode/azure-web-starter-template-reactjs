@@ -11,18 +11,11 @@ git add --force dist/*
 git commit -m "Deploy"
 
 GIT_USERNAME="dokku"
-GIT_TARGET_URL="https://${GIT_USERNAME}@${AZURE_WA_GIT_TARGET}:${DOKKU_APPNAME}"
+GIT_TARGET_URL="${GIT_USERNAME}@${AZURE_WA_GIT_TARGET}:${DOKKU_APPNAME}"
 
 eval "$(ssh-agent -s)"
 chmod 600 .travis/dokku_deploy_key
-
-expect << EOF
-  spawn ssh-add .travis/dokku_deploy_key
-  expect "Enter passphrase"
-  send "${DEPLOY_PASSPHRASE}\r"
-  expect eof
-EOF
-
+. ./scripts/deploy_passphrase.exp
 git remote add $GIT_USERNAME $GIT_TARGET_URL
 git push $GIT_USERNAME master
 
