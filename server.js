@@ -9,7 +9,7 @@ var configuration = {
   load: function (envProps) {
       var defaultConfig = {};
 	  var logStr = '';
-
+  
 	  if(envProps && envProps.length > 0){
 	  	 	  envProps.forEach(function (item) {
 			    if (process.env[item])

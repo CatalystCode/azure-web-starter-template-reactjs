@@ -1,13 +1,14 @@
 language: node_js
 node_js:
-  - "4.1"
-
+- '4.1'
 before_script:
-  - npm run third-party-dependencies
-
+- npm run third-party-dependencies
 deploy:
   skip_cleanup: true
   provider: script
   script: bash scripts/travis_deploy.sh
   on:
     branch: master
+before_install:
+- openssl aes-256-cbc -K $encrypted_32270c5e578a_key -iv $encrypted_32270c5e578a_iv
+  -in .travis/dokku_deploy_key.enc -out .travis/dokku_deploy_key -d

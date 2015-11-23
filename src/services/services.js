@@ -7,7 +7,7 @@ export const SERVICES = {
     $.get("{0}/test".format(this.host), cb.success)
     .fail(cb.failure);
   },
-  
+
   getUserAuthenticationInfo(){
    ///Make sure the AAD client id is setup in the config
    let userProfile = window.userProfile;
@@ -17,6 +17,7 @@ export const SERVICES = {
 
     if(!env_properties.AAD_AUTH_CLIENTID)
       throw new Error('AAD Auth Client ID config is not setup in Azure for this instance');
+    console.log('AD ID: ' + env_properties.AAD_AUTH_CLIENTID);
 
     window.config = {
       instance: 'https://login.microsoftonline.com/',
