@@ -8,5 +8,6 @@ expect << EOF
     expect "$"
     puts "The output is \$expect_out(buffer) "
     set timeout 60
+    interact
     expect eof
 EOF
