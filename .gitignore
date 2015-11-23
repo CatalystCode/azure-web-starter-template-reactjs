@@ -31,3 +31,4 @@ dokku_deploy_key
 tmp
 *.pem
 config.json
+dist

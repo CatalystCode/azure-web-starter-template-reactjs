@@ -7,6 +7,7 @@ git config user.email "erisch@microsoft.com"
 echo 'Adding files to local repo '
 ls -ltr
 git add .
+git add --force dist/*
 git commit -m "Deploy"
 
 GIT_USERNAME="dokku"
