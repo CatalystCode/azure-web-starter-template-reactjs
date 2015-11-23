@@ -14,13 +14,14 @@ GIT_USERNAME="dokku"
 GIT_TARGET_URL="${GIT_USERNAME}@${AZURE_WA_GIT_TARGET}:${DOKKU_APPNAME}"
 
 eval "$(ssh-agent -s)"
+ssh-agent -s
 
 echo 'Adding decrypted SSH private keys for deployment'
 . ./scripts/deploy_passphrase.exp
 
-echo 'Provate keys added. Starting Dokku Deployment'
+echo 'Private keys added. Starting Dokku Deployment'
+. ./scripts/dokku_git_push.exp
 
 git remote add $GIT_USERNAME $GIT_TARGET_URL
-git push $GIT_USERNAME master
 
 echo 'Deployed!!'
