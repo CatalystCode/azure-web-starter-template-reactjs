@@ -1,7 +1,10 @@
-#!/usr/bin/expect -f
+#!/usr/bin/expect
 
+set timeout -1
 spawn git push dokku master
 expect "Are you sure you want to continue connecting (yes/no)?"
 send "yes\r"
-
-interact
+expect "$"
+puts "The output is \$expect_out(buffer) "
+set timeout 60
+expect eof
