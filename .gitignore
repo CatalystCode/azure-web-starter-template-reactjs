@@ -30,4 +30,3 @@ bower_components
 tmp
 *.pem
 config.json
-dist
