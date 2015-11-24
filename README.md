@@ -1,6 +1,13 @@
-<img src="https://cloud.githubusercontent.com/assets/7635865/11227181/833d645a-8d52-11e5-96fd-d8a11d064ba3.jpg" width="200" height="100"/>
-# AzureWebStarterTemplateReactJS
-A starter template for a NodeJS web application running on Microsoft Azure. This repo is a starting point for developers that would like a production ready fullstack site running on Azure.This project is intended for web applications running on the react/flux platform, and we are working towards offering the same for Angular 2 and Ember. This is an unopinionated project, which enables developers to plugin any of there own framework or CI deployment solution. I decided to use Azure Deploy/Kudu for this project as it's the default for Azure, which is fully in your own control.  
+<img src="https://cloud.githubusercontent.com/assets/7635865/11383036/781f2cee-92d3-11e5-98b9-91eb7f29e540.png" width="500" height="100"/><br>
+<img src="https://cloud.githubusercontent.com/assets/7635865/11382863/6505a116-92d2-11e5-965f-33dba073d0a5.png" width="500" height="300"/>
+
+# Starter Template for Dokku Linux Azure Web App
+A starter template for a NodeJS web application running on Microsoft Azure. This repo is a starting point for developers that would like a production ready fullstack site running on Azure.This project is intended for web applications running on the react/flux platform, and we are working towards offering the same for Angular 2 and Ember. This is an unopinionated project, that enables developers to kickoff a web project running off any framework or CI deployment solution. 
+
+This particular project is running off a Dokku Azure Linux VM, thanks to Steven Edouard's recent work with the folks at Dokku and Azure. You can follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way) to get started.
+
+##### Assumptions
+ 1. Azure Web App Dokku Web App - Please follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way)
 
 ##### Installation
 ```
