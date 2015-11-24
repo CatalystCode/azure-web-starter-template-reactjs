@@ -30,3 +30,5 @@ bower_components
 tmp
 *.pem
 config.json
+.travis/*
+ssh_keys.tar
