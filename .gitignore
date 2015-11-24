@@ -27,7 +27,7 @@ build/Release
 node_modules
 node_modules_old
 bower_components
-dokku_deploy_key
 tmp
 *.pem
 config.json
+dist

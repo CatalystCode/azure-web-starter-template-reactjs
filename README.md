@@ -28,7 +28,7 @@ Azure deploy is the default continous integration agent by default, but can be c
  3. Mocha 
  4. Sinon
  5. ESLint
- 6. React Test Utils
+ 6. React Test Utils 
 
 For Test-Driven Development, open up a second command window and run 
 ```
