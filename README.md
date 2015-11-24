@@ -6,7 +6,7 @@ A starter template for a NodeJS web application running on Microsoft Azure. This
 
 This particular project is running off a Dokku Azure Linux VM, thanks to Steven Edouard's recent work with the folks at Dokku and Azure. You can follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way) to get started.
 
-This project provides you with boilerplated capabilities of integrating Azure Active directory authentication and Application Insights logging. Both features are optional and ignored when setup is pending. 
+This project provides boilerplated capabilities for integrating Azure Active directory authentication and Application Insight logging. Both features are optional and ignored when setup is pending. 
 
 ##### Assumptions
  1. Azure Linux Web App is Online - Please follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way)
