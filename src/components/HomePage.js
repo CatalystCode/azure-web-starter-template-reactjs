@@ -10,12 +10,6 @@ export default class HomePage extends Component {
                 <p><a className="btn btn-primary btn-large">Call to action!</a>
                 </p>
             </header>
-            <hr />
-            <div className="row">
-                <div className="col-lg-12">
-                    <h3>Latest Features</h3>
-                </div>
-            </div>
             <div className="row text-center">
                 <div className="col-md-3 col-sm-6 hero-feature">
                     <div className="thumbnail">

@@ -5,6 +5,6 @@ const DefaultRoute = Router.DefaultRoute;
 
 export const routes = (
     <Route>
-    	<Route path="/" component={EntryPage} linkLabel="My App" href="/" />
+    	<Route path="/" component={EntryPage} linkLabel="My App" href="/" icon="fa fa-share-alt-square fa" />
     </Route>
 );

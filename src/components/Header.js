@@ -25,7 +25,7 @@ class Header extends Component {
                       <span className="icon-bar"></span>
                       <span className="icon-bar"></span>
                   </button>
-                  <a className="navbar-brand text-danger" href="#">App Header Label</a>
+                  <a className="navbar-brand text-danger" href="#"><span>&lt;</span><span className="brandLabel">App Header Label</span><span>&gt;</span></a>
               </div>
               <div className="navbar-collapse collapse" id="navbar-collapsible">
                   <ul className="nav navbar-nav navbar-left">
@@ -35,7 +35,12 @@ class Header extends Component {
                           let className = (routeName === routeProps.component.displayName) ? "active": "inactive";
 
                           if(routeProps.href && routeProps.linkLabel)
-                            return <li className={className}><a href={routeProps.href}>{routeProps.linkLabel}</a></li>
+                            return <li className={className}>
+                                       <a href={routeProps.href}>
+                                         {routeProps.icon?<i className={routeProps.icon}></i>:undefined}
+                                         &nbsp;{routeProps.linkLabel}
+                                       </a>
+                                   </li>
                         })
                       }
                       <li>&nbsp;</li>
@@ -45,7 +50,8 @@ class Header extends Component {
                         <span className="userLabel">{self.state && self.state.given_name ? 'Hello ' + self.state.given_name : undefined}&nbsp;</span>
                         <span className="fa-stack fa-lg">
                           <i className="fa fa-square fa-stack-2x"></i>
-                          <i className="fa fa-user fa-stack-1x fa-inverse" style={{color:'#6ca439'}}>
+                          <i className="fa fa-stack-1x fa-inverse" style={{color: '#222931', fontWeight: '600', fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif'}}>
+                            ES
                           </i>
                         </span>
                       </li>

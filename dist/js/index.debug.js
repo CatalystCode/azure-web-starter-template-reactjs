@@ -23587,53 +23587,53 @@ module.exports = exports["default"];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-    value: true
+  value: true
 });
 
 var _createClass = (function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
 })();
 
 var _get = function get(_x, _x2, _x3) {
-    var _again = true;_function: while (_again) {
-        var object = _x,
-            property = _x2,
-            receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
-            var parent = Object.getPrototypeOf(object);if (parent === null) {
-                return undefined;
-            } else {
-                _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
-            }
-        } else if ('value' in desc) {
-            return desc.value;
-        } else {
-            var getter = desc.get;if (getter === undefined) {
-                return undefined;
-            }return getter.call(receiver);
-        }
+  var _again = true;_function: while (_again) {
+    var object = _x,
+        property = _x2,
+        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+      var parent = Object.getPrototypeOf(object);if (parent === null) {
+        return undefined;
+      } else {
+        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+      }
+    } else if ('value' in desc) {
+      return desc.value;
+    } else {
+      var getter = desc.get;if (getter === undefined) {
+        return undefined;
+      }return getter.call(receiver);
     }
+  }
 };
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { 'default': obj };
+  return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
 function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError('Cannot call a class as a function');
-    }
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError('Cannot call a class as a function');
+  }
 }
 
 function _inherits(subClass, superClass) {
-    if (typeof superClass !== 'function' && superClass !== null) {
-        throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
-    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  if (typeof superClass !== 'function' && superClass !== null) {
+    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var _react = require('react');
@@ -23643,39 +23643,39 @@ var _react2 = _interopRequireDefault(_react);
 var _routesRoutes = require('../routes/routes');
 
 var Header = (function (_Component) {
-    _inherits(Header, _Component);
+  _inherits(Header, _Component);
 
-    function Header() {
-        _classCallCheck(this, Header);
+  function Header() {
+    _classCallCheck(this, Header);
 
-        _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).apply(this, arguments);
+    _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).apply(this, arguments);
+  }
+
+  _createClass(Header, [{
+    key: 'getInitialState',
+    value: function getInitialState() {
+      var userProfile = window.userProfile;
+
+      return { given_name: userProfile.given_name || 'N/A' };
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var self = this;
+      var routeName = this.props.routePage;
+      var routeCollection = _routesRoutes.routes.props.children;
+      var routeIterator = routeCollection instanceof Array ? routeCollection : [routeCollection];
 
-    _createClass(Header, [{
-        key: 'getInitialState',
-        value: function getInitialState() {
-            var userProfile = window.userProfile;
+      return _react2['default'].createElement('nav', { className: 'navbar navbar-trans', role: 'navigation' }, _react2['default'].createElement('div', { classNameName: 'container' }, _react2['default'].createElement('div', { className: 'navbar-header' }, _react2['default'].createElement('button', { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#navbar-collapsible' }, _react2['default'].createElement('span', { className: 'sr-only' }, 'Toggle navigation'), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' })), _react2['default'].createElement('a', { className: 'navbar-brand text-danger', href: '#' }, _react2['default'].createElement('span', null, '<'), _react2['default'].createElement('span', { className: 'brandLabel' }, 'App Header Label'), _react2['default'].createElement('span', null, '>'))), _react2['default'].createElement('div', { className: 'navbar-collapse collapse', id: 'navbar-collapsible' }, _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-left' }, routeIterator.map(function (route) {
+        var routeProps = route.props;
+        var className = routeName === routeProps.component.displayName ? "active" : "inactive";
 
-            return { given_name: userProfile.given_name || 'N/A' };
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var self = this;
-            var routeName = this.props.routePage;
-            var routeCollection = _routesRoutes.routes.props.children;
-            var routeIterator = routeCollection instanceof Array ? routeCollection : [routeCollection];
+        if (routeProps.href && routeProps.linkLabel) return _react2['default'].createElement('li', { className: className }, _react2['default'].createElement('a', { href: routeProps.href }, routeProps.icon ? _react2['default'].createElement('i', { className: routeProps.icon }) : undefined, ' ', routeProps.linkLabel));
+      }), _react2['default'].createElement('li', null, ' ')), _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-right' }, _react2['default'].createElement('li', { className: 'userProfile' }, _react2['default'].createElement('span', { className: 'userLabel' }, self.state && self.state.given_name ? 'Hello ' + self.state.given_name : undefined, ' '), _react2['default'].createElement('span', { className: 'fa-stack fa-lg' }, _react2['default'].createElement('i', { className: 'fa fa-square fa-stack-2x' }), _react2['default'].createElement('i', { className: 'fa fa-stack-1x fa-inverse', style: { color: '#222931', fontWeight: '600', fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif' } }, 'ES'))), _react2['default'].createElement('li', null, _react2['default'].createElement('img', { className: 'logoImg', src: '/dist/assets/images/partner_catalyst_logo.png', width: '175' }))))));
+    }
+  }]);
 
-            return _react2['default'].createElement('nav', { className: 'navbar navbar-trans', role: 'navigation' }, _react2['default'].createElement('div', { classNameName: 'container' }, _react2['default'].createElement('div', { className: 'navbar-header' }, _react2['default'].createElement('button', { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#navbar-collapsible' }, _react2['default'].createElement('span', { className: 'sr-only' }, 'Toggle navigation'), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' })), _react2['default'].createElement('a', { className: 'navbar-brand text-danger', href: '#' }, 'App Header Label')), _react2['default'].createElement('div', { className: 'navbar-collapse collapse', id: 'navbar-collapsible' }, _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-left' }, routeIterator.map(function (route) {
-                var routeProps = route.props;
-                var className = routeName === routeProps.component.displayName ? "active" : "inactive";
-
-                if (routeProps.href && routeProps.linkLabel) return _react2['default'].createElement('li', { className: className }, _react2['default'].createElement('a', { href: routeProps.href }, routeProps.linkLabel));
-            }), _react2['default'].createElement('li', null, ' ')), _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-right' }, _react2['default'].createElement('li', { className: 'userProfile' }, _react2['default'].createElement('span', { className: 'userLabel' }, self.state && self.state.given_name ? 'Hello ' + self.state.given_name : undefined, ' '), _react2['default'].createElement('span', { className: 'fa-stack fa-lg' }, _react2['default'].createElement('i', { className: 'fa fa-square fa-stack-2x' }), _react2['default'].createElement('i', { className: 'fa fa-user fa-stack-1x fa-inverse', style: { color: '#6ca439' } }))), _react2['default'].createElement('li', null, _react2['default'].createElement('img', { className: 'logoImg', src: '/dist/assets/images/partner_catalyst_logo.png', width: '175' }))))));
-        }
-    }]);
-
-    return Header;
+  return Header;
 })(_react.Component);
 
 exports['default'] = Header;
@@ -23750,7 +23750,7 @@ var HomePage = (function (_Component) {
     _createClass(HomePage, [{
         key: "render",
         value: function render() {
-            return _react2["default"].createElement("div", { className: "container" }, _react2["default"].createElement("header", { className: "jumbotron hero-spacer" }, _react2["default"].createElement("h1", null, "Hey there!"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { className: "btn btn-primary btn-large" }, "Call to action!"))), _react2["default"].createElement("hr", null), _react2["default"].createElement("div", { className: "row" }, _react2["default"].createElement("div", { className: "col-lg-12" }, _react2["default"].createElement("h3", null, "Latest Features"))), _react2["default"].createElement("div", { className: "row text-center" }, _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info"))))), _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info"))))), _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info"))))), _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info")))))));
+            return _react2["default"].createElement("div", { className: "container" }, _react2["default"].createElement("header", { className: "jumbotron hero-spacer" }, _react2["default"].createElement("h1", null, "Hey there!"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { className: "btn btn-primary btn-large" }, "Call to action!"))), _react2["default"].createElement("div", { className: "row text-center" }, _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info"))))), _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info"))))), _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info"))))), _react2["default"].createElement("div", { className: "col-md-3 col-sm-6 hero-feature" }, _react2["default"].createElement("div", { className: "thumbnail" }, _react2["default"].createElement("img", { src: "http://placehold.it/800x500", alt: "" }), _react2["default"].createElement("div", { className: "caption" }, _react2["default"].createElement("h3", null, "Feature Label"), _react2["default"].createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipisicing elit."), _react2["default"].createElement("p", null, _react2["default"].createElement("a", { href: "#", className: "btn btn-primary" }, "Buy Now!"), " ", _react2["default"].createElement("a", { href: "#", className: "btn btn-default" }, "More Info")))))));
         }
     }]);
 
@@ -23901,7 +23901,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var DefaultRoute = _reactRouter.Router.DefaultRoute;
 
-var routes = _react2['default'].createElement(_reactRouter.Route, null, _react2['default'].createElement(_reactRouter.Route, { path: '/', component: _EntryPage.EntryPage, linkLabel: 'My App', href: '/' }));
+var routes = _react2['default'].createElement(_reactRouter.Route, null, _react2['default'].createElement(_reactRouter.Route, { path: '/', component: _EntryPage.EntryPage, linkLabel: 'My App', href: '/', icon: 'fa fa-share-alt-square fa' }));
 exports.routes = routes;
 
 },{"./EntryPage":218,"react":210,"react-router":48}],220:[function(require,module,exports){
