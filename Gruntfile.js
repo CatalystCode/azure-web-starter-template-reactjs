@@ -112,8 +112,8 @@ module.exports = function (grunt) {
                     relative: false
                 },
                 mainFiles: {
-                      'jquery': ['dist/jquery.min.js'],
-                      'bootstrap': ['dist/css/bootstrap.min.css', 'dist/js/bootstrap.min.js'],
+                      'jquery': ['dist/jquery.min.js', 'dist/jquery.min.map'],
+                      'bootstrap': ['dist/css/bootstrap.min.css', 'dist/js/bootstrap.min.js', 'dist/css/bootstrap.css.map'],
                       'fontawesome': ['css/font-awesome.min.css'],
                       'remarkable-bootstrap-notify': ['dist/bootstrap-notify.min.js']
                 }
