@@ -6,8 +6,10 @@ A starter template for a NodeJS web application running on Microsoft Azure. This
 
 This particular project is running off a Dokku Azure Linux VM, thanks to Steven Edouard's recent work with the folks at Dokku and Azure. You can follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way) to get started.
 
+This project provides you with boilerplated capabilities of integrating Azure Active directory authentication and Application Insights logging. Both features are optional and ignored when setup is pending. 
+
 ##### Assumptions
- 1. Azure Web App Dokku Web App - Please follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way)
+ 1. Azure Linux Web App is Online - Please follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way)
 
 ##### Installation
 ```
@@ -24,9 +26,9 @@ npm start
 ##### Packaged Components
 
 ######Deployment
- 1. Azure CI via Kudu deployment scripts
+ 1. Travis CI Deployment to Dokku Azure VM
 
-Azure deploy is the default continous integration agent by default, but can be changed to something like Dokku at anytime. This project comes bundled with a deploy.sh file which you should never have to touch. You can refer to the blog on how to setup deployment through the azure portal. [Azure Deployment Steps]( https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/)
+This repo comes bundled with travis deployment scripts that will deploy your web app builds to Azure on Git push events. You will need Ruby installed in order to use the Travis CLI tool and also access to both the Dokku Deploy and Dokku VM SSH keys, from the Dokku Web App setup. 
  
 ######Testing
 
