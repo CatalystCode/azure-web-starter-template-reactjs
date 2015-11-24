@@ -8,7 +8,7 @@ git clone https://github.com/CatalystCode/AzureWebStarterTemplateReactJS.git
 npm run setup
 ```
 
-##### Project Build / Start
+##### Project Build / Start 
 ```
 grunt build
 npm start
