@@ -61,11 +61,7 @@ module.exports = function (grunt) {
               cwd: './',
               src: ['./dist/vendor/vendor.css'],
               ext: '.min.css'
-            }],
-            options: {
-              sourceMap: true,
-              sourceMapName: './dist/vendor/vendor.min.css.map'
-            }
+            }]
           }
         },
         karma: {
