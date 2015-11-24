@@ -2,8 +2,7 @@ language: node_js
 node_js:
 - '4.1'
 before_install:
-- openssl aes-256-cbc -K $encrypted_32270c5e578a_key -iv $encrypted_32270c5e578a_iv
-  -in ssh_keys.tar.enc -out ssh_keys.tar -d
+- openssl aes-256-cbc -K "$super_secret_password" -in ssh_keys.tar.enc -out ssh_keys.tar -d
 - sudo apt-get install expect
 - tar xvf ssh_keys.tar
 before_script:
@@ -14,3 +13,6 @@ deploy:
   script: bash scripts/travis_deploy.sh
   on:
     branch: master
+env:
+  global:
+    secure: mzxDp1rEwo95FotFW/QEJ3spW5W83/fN8O2nmHOFx7lekroL1tPv5XHTrxEmw4a/lRBzqA+ILBNqXBtQ6GmjvpKS/0iKD3GQSY1cwri8aI/modJKKOvmSpauulsowZ2/3Sa8MSrac3txO8skk8OV6jEWfnKrfHUJ8EnolrQrCvFcID8WpdUF99Q+1I5aIfo3KDk5Q6cKpx8heYaAgfgg5nuuXS2VNGQ9tm1ed9+6MkcHBQlCMDWJlU/bo7Vaj4/wE14cOmVaUH15pfe7em7HI6W2Etuw4BHe09544gNdJjYmsxzgwEBGQvuWYchJ3DiONNAC9WZg+xW3JHKKrsnyWqvSbmA+2cSQP4bNPwLsWrudfhEHKfOaHOMYZZBkUqrqJFCTfGZNuKmmhuHqsEihL5yJ5JFYkZUN5aNYiqF7z5niMCJXIzgK0XvAH8RmuSVbEOZNOMizJWbRHZwRH0sdpXDJKrherbb1kt+F/Oc1PQaIkD52CPjKP461rdhqp7HIJLDSNheA9HGgOWoZIpUGN1xJSCb21JstSmzTScnwOS8NaFs/ERN0JrR9nHtnLcGMyLcYK1b1uXLz9v+4OHjW2Cz3ZyFVDGu6Vsb5g5yD1GKG42/4+fa218DzMkEtgD7r8WDF+3QH10ctI1/nLwD4J078EXjFdO41FyXSM1ZbBQo=
