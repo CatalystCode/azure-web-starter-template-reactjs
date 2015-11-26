@@ -88,17 +88,55 @@ var AZURE_CONFIG_PROPS = ['APPINSIGHTS_INSTRUMENTATIONKEY', 'AAD_AUTH_CLIENTID']
 
 1. Active directory
 
-If you'd like to enable Acive Directory authentication, please follow the   [Register your web server app with AD](https://msdn.microsoft.com/en-us/office/office365/howto/add-common-consent-manually) instructions .
+If you'd like to enable Acive Directory authentication, please follow the [Register your web server app with AD](https://msdn.microsoft.com/en-us/office/office365/howto/add-common-consent-manually) instructions using your app's public hostname alias as the Sign-On URL. Once you've obtained the AAD client ID, ssh into Dokku and register the token configuration using the following command. 
+
+```
+dokku config:set azure-web-app AAD_AUTH_CLIENTID=xxxxx
+```
+
+######Logging
+
+1. Application Insights
+
+Application Insights is a powerhouse platform that provides insight and transparency into the health of your application. You can use it to create monitoring rules / notifications, and log errors and traces about your app. 
+
+If you'd like to setup application insights, head on over to the (Azure Preview Portal)[https://ms.portal.azure.com/#create/Microsoft.AppInsights] and create a new application insight resource selecting 'Other(preview)' as the application type. Once the app insight is setup, grab the Instramentation Key from Settings > Configure / Properties. You can configure app insight into your app by running the following command. Dokku will automatically restart your app, and you should start seeing app insight events flowing through the azure portal right away. 
+
+```
+dokku config:set azure-web-app APPINSIGHTS_INSTRUMENTATIONKEY=xxxxx
+```
+
+The app insight client library is available in the window object of the DOM. You can publish custom traces and events to App Insight anywhere thorught your app by adding the following code in any of your javascript source files.
+
+```
+appInsights.trackEvent("CanYouHearMe", {message: 'I sure can'});
+```
 
 ######Web Routing
 
 1. react-router
+
+This project uses React Router to keep your UI in sync with the URL. React Router was inspired by Ember's fantastic router. Routes are managed in the /src/routes/routes.js file. 
+
+```
+import {EntryPage} from './EntryPage';
+
+export const routes = (
+    <Route>
+    	<Route path="/" component={EntryPage} linkLabel="My App" href="/" icon="fa fa-share-alt-square fa" />
+    </Route>
+);
+```
+
+For any route, you need to specify the React Component that's binded to the route, the URL path, href and the header link label. The presence of the href attribute determines if the route should be displayed on the header. You can optionally provide a font awesome icon that should be rendered for the menu item on the header.
 
 ######Asset pipeline automation
 
 1. grunt tasks that cover css/js minifacation, unification
 2. Browserify
 3. Babel
+
+We're using grunt as our asset pipeline automation framework. Any additoinal tasks can be setup in Gruntfile.js
 
 ######3rd party components
 
@@ -108,9 +146,3 @@ If you'd like to enable Acive Directory authentication, please follow the   [Reg
 
 1. node
 2. express
-
-######Logging
-
-1. Application Insights
-
-**
