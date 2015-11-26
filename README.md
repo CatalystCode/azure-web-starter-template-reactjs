@@ -1,3 +1,4 @@
+<img src="https://cloud.githubusercontent.com/assets/7635865/11428750/e01c09c4-943c-11e5-9257-0e1bae7ea379.png" width="45" height="45"/>
 [![Build Status](https://travis-ci.org/CatalystCode/AzureWebStarterTemplateReactJS.svg?branch=master)](https://travis-ci.org/CatalystCode/AzureWebStarterTemplateReactJS)
 
 <img src="https://cloud.githubusercontent.com/assets/7635865/11383036/781f2cee-92d3-11e5-98b9-91eb7f29e540.png" width="500" height="100"/><br>
