@@ -2,11 +2,13 @@
 <img src="https://cloud.githubusercontent.com/assets/7635865/11382863/6505a116-92d2-11e5-965f-33dba073d0a5.png" width="500" height="300"/>
 
 # Starter Template for Dokku Linux Azure Web App
-A starter template for a NodeJS web application running on Microsoft Azure. This repo is a starting point for developers that would like a production ready fullstack site running on Azure.This project is intended for web applications running on the react/flux platform, and we are working towards offering the same for Angular 2 and Ember. This is an unopinionated project, that enables developers to kickoff a web project running off any framework or CI deployment solution. 
+A starter template for a NodeJS web application running on Microsoft Azure. This repo is a starting point for developers seeking a production ready fullstack site running on Azure. This project is intended for web applications running on the react/flux platform, and hoping to offer similar options for Angular 2, Relay / GraphQL and Ember. This is an unopinionated project, that enables developers to kickoff a web project running off any framework or CI deployment solution. 
 
 This particular project is running off a Dokku Azure Linux VM, thanks to Steven Edouard's recent work with the folks at Dokku and Azure. You can follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way) to get started.
 
-This project provides boilerplated capabilities for integrating Azure Active directory authentication and Application Insight logging. Both features are optional and ignored when setup is pending. 
+This project provides a boilerplate integration with Azure Active directory authentication and Application Insight logging. Both features are optional. 
+
+I'm currently working towards adding a VSCode plugin that will setup this app locally through your IDE. 
 
 ##### Assumptions
  1. Azure Linux Web App is Online - Please follow these [instructions](https://github.com/sedouard/case-studies-1/blob/case_study_dokku_azure/_posts/2015-10-26-Streamlined-Dokku-Deployment.md#deploying-dokku-to-azure---the-easy-way)
@@ -46,52 +48,68 @@ grunt test-dev
 
 The project comes bundled with a Karma test harness and PhantomJS. All JS test scripts in the /tests directory will automatically re-run when any file(s) change. 
 
-**Configuration**
+######Configuration
 
-1. Azure Cloud Config Settings
+1. Dokku application configuration variables
 
-**Front-end**
+An application will often reqiure some configuration. Dokku supports application configuration via environment variables. Environment variables may contain private data, such as passwords or API keys, so it is not recommended to store them in your application's repository. For example, this project is on the lookout for two optional environment variables called APPINSIGHTS_INSTRUMENTATIONKEY and AAD_AUTH_CLIENTID. 
+
+To set this up on your host, please ssh into your Dokku VM and run the following command. 
+```
+dokku config:set azure-web-app APPINSIGHTS_INSTRUMENTATIONKEY=xxx AAD_AUTH_CLIENTID=xxxxx
+```
+
+Then register these variables in your server.js file
+```
+var AZURE_CONFIG_PROPS = ['APPINSIGHTS_INSTRUMENTATIONKEY', 'AAD_AUTH_CLIENTID'];
+```
+
+######Front-end
 
 1. ReactJS 
 2. Flux
 
-**Event Processing**
+######Event Processing
 
 1. RxJS
 
-**Interface component**
+######Interface component
 
 1. Bootstrap
 2. Font awesome
 3. JQuery
 4. Bootstrap Notifier
 
-**Starter Template layout**
+######Starter Template layout
 
-**Authentication**
+1. The default component for this single page app's homepage can be found in src/components/Hompepage.js. I'll be sprucing up the look and feel with Bootstrap announcing the recent release of version 4. 
+
+######Authentication
 
 1. Active directory
 
-**Web Routing**
+If you'd like to enable Acive Directory authentication, please follow the   [Register your web server app with AD](https://msdn.microsoft.com/en-us/office/office365/howto/add-common-consent-manually) instructions .
+
+######Web Routing
 
 1. react-router
 
-**Asset pipeline automation**
+######Asset pipeline automation
 
 1. grunt tasks that cover css/js minifacation, unification
 2. Browserify
 3. Babel
 
-**3rd party components**
+######3rd party components
 
 1. bower
 
-**Web server**
+######Web server
 
 1. node
 2. express
 
-**Logging**
+######Logging
 
 1. Application Insights
 
