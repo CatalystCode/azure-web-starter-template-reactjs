@@ -29,11 +29,6 @@ npm start
 
 ##### Packaged Components
 
-######Deployment
- 1. Travis CI Deployment to Dokku Azure VM
-
-This repo comes bundled with travis deployment scripts that will deploy your web app builds to Azure on Git push events. You will need Ruby installed in order to use the Travis CLI tool and also access to both the Dokku Deploy and Dokku VM SSH keys, from the Dokku Web App setup. 
- 
 ######Testing
 
  1. PhantomJS
@@ -102,7 +97,7 @@ dokku config:set azure-web-app AAD_AUTH_CLIENTID=xxxxx
 
 Application Insights is a powerhouse platform that provides insight and transparency into the health of your application. You can use it to create monitoring rules / notifications, and log errors and traces about your app. 
 
-If you'd like to setup application insights, head on over to the (Azure Preview Portal)[https://ms.portal.azure.com/#create/Microsoft.AppInsights] and create a new application insight resource selecting 'Other(preview)' as the application type. Once the app insight is setup, grab the Instramentation Key from Settings > Configure / Properties. You can configure app insight into your app by running the following command. Dokku will automatically restart your app, and you should start seeing app insight events flowing through the azure portal right away. 
+If you'd like to setup application insights, head on over to the [Azure Preview Portal](https://ms.portal.azure.com/#create/Microsoft.AppInsights) and create a new application insight resource selecting 'Other(preview)' as the application type. Once the app insight is setup, grab the Instramentation Key from Settings > Configure / Properties. You can configure app insight into your app by running the following command. Dokku will automatically restart your app, and you should start seeing app insight events flowing through the azure portal right away. 
 
 ```
 dokku config:set azure-web-app APPINSIGHTS_INSTRUMENTATIONKEY=xxxxx
@@ -140,11 +135,44 @@ For any route, you need to specify the React Component that's binded to the rout
 
 We're using grunt as our asset pipeline automation framework. Any additional tasks can be setup in Gruntfile.js
 
-######3rd party components
-
-1. bower
-
 ######Web server
 
 1. node
 2. express
+
+######3rd party components
+
+1. bower
+
+######Deployment
+Batteries are included - If you decide to use Travis, this repo comes packaged with travis deployment scripts(.travis.yml) that will deploy your web app builds to Azure on Git push events. Please refer to the ["Getting Started Guide"](https://docs.travis-ci.com/user/getting-started/) if this is your first time using Travis. 
+
+Assumptions
+
+1. Travis CLI and Ruby is localled installed. Travis CLI operates in Ruby's runtime environment. Checkout this [post](https://docs.travis-ci.com/user/encrypting-files/#Preparation) to install the Travis CLI and [here](https://github.com/travis-ci/travis.rb#installation) for installing Ruby.
+2. You have a Dokku VM web app.
+3. You have a Dokku Deploy SSH private key
+4. You have a Dokku VM private key
+5. You have [Git Bash](https://git-scm.com/downloads) locally installed or using a Bash terminal. 
+6. Your current working directory is the root of the clones repo. 
+7. The Travis deployment instance is setup on travis-ci.org.
+
+The Git push events on the Dokku remote Git target trigger a rebuild on the host. This requires adding both SSH keys created during the VM provisioning described in Stephen's post above. You'll need to hook in your encrypted ssh keys for Travis deploy. We're evaluating more of a streamlined solution, so this may be simplified in the future. 
+
+You will need Ruby installed in order to use the Travis CLI tool and also access to both the Dokku Deploy and Dokku VM SSH keys, from the Dokku Web App setup. Travis CLI will securely store the encyption secret within the settings of your deployment on Travis, as the encrypted SSH keys will be decrypted by Travis during the deployment. 
+
+Register your encryption secret with Travis
+```
+travis encrypt secret_password=your_super_secret --add
+```
+Copy both SSH private keys into a folder called .travis within the root of the repo. This folder will not be added to the repo as it's included in .gitignore. ssh_keys.tar is also added to git ignore, as we do not want to add the unencrypted private keys to Git.  
+```
+tar cvf ssh_keys.tar .travis/hostname_key .travis/dokku_deploy_key
+```
+
+Encrypt the private ssh_keys. This will add the encrypted ssh_keys.tar.enc to your repo for the deployment. 
+```
+openssl aes-256-cbc -k "your_super_secret" -in ssh_keys.tar -out ssh_keys.tar.enc
+```
+
+That's it. 
