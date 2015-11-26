@@ -52,7 +52,7 @@ The project comes bundled with a Karma test harness and PhantomJS. All JS test s
 
 1. Dokku application configuration variables
 
-An application will often reqiure some configuration. Dokku supports application configuration via environment variables. Environment variables may contain private data, such as passwords or API keys, so it is not recommended to store them in your application's repository. For example, this project is on the lookout for two optional environment variables called APPINSIGHTS_INSTRUMENTATIONKEY and AAD_AUTH_CLIENTID. 
+An application will often require some configuration. Dokku supports application configuration via environment variables. Environment variables may contain private data, such as passwords or API keys, so it is not recommended to store them in your application's repository. For example, this project is on the lookout for two optional environment variables called APPINSIGHTS_INSTRUMENTATIONKEY and AAD_AUTH_CLIENTID. 
 
 To set this up on your host, please ssh into your Dokku VM and run the following command. 
 ```
@@ -88,7 +88,7 @@ var AZURE_CONFIG_PROPS = ['APPINSIGHTS_INSTRUMENTATIONKEY', 'AAD_AUTH_CLIENTID']
 
 1. Active directory
 
-If you'd like to enable Acive Directory authentication, please follow the [Register your web server app with AD](https://msdn.microsoft.com/en-us/office/office365/howto/add-common-consent-manually) instructions using your app's public hostname alias as the Sign-On URL. Once you've obtained the AAD client ID, ssh into Dokku and register the token configuration using the following command. 
+If you'd like to enable Active Directory authentication, please follow the [Register your web server app with AD](https://msdn.microsoft.com/en-us/office/office365/howto/add-common-consent-manually) instructions using your app's public hostname alias as the Sign-On URL. Once you've obtained the AAD client ID, ssh into Dokku and register the token configuration using the following command. 
 
 ```
 dokku config:set azure-web-app AAD_AUTH_CLIENTID=xxxxx
@@ -106,7 +106,7 @@ If you'd like to setup application insights, head on over to the (Azure Preview 
 dokku config:set azure-web-app APPINSIGHTS_INSTRUMENTATIONKEY=xxxxx
 ```
 
-The app insight client library is available in the window object of the DOM. You can publish custom traces and events to App Insight anywhere thorught your app by adding the following code in any of your javascript source files.
+The app insight client library is available in the window object of the DOM. You can publish custom traces and events to App Insight anywhere throughout your app by adding the following code in any of your javascript source files.
 
 ```
 appInsights.trackEvent("CanYouHearMe", {message: 'I sure can'});
@@ -136,7 +136,7 @@ For any route, you need to specify the React Component that's binded to the rout
 2. Browserify
 3. Babel
 
-We're using grunt as our asset pipeline automation framework. Any additoinal tasks can be setup in Gruntfile.js
+We're using grunt as our asset pipeline automation framework. Any additional tasks can be setup in Gruntfile.js
 
 ######3rd party components
 
