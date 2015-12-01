@@ -23645,18 +23645,19 @@ var _routesRoutes = require('../routes/routes');
 var Header = (function (_Component) {
   _inherits(Header, _Component);
 
-  function Header() {
+  function Header(props) {
     _classCallCheck(this, Header);
 
-    _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).apply(this, arguments);
+    _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).call(this, props);
+    var profileName = window.userProfile ? window.userProfile.given_name : 'N/A';
+    this.state = { given_name: profileName };
   }
 
   _createClass(Header, [{
-    key: 'getInitialState',
-    value: function getInitialState() {
-      var userProfile = window.userProfile;
-
-      return { given_name: userProfile.given_name || 'N/A' };
+    key: 'transformNameToInitials',
+    value: function transformNameToInitials(givenName) {
+      var nameSplit = givenName.split(' ');
+      return nameSplit[0].substring(0, 0) + nameSplit[1].substring(0, 0);
     }
   }, {
     key: 'render',
@@ -23665,13 +23666,14 @@ var Header = (function (_Component) {
       var routeName = this.props.routePage;
       var routeCollection = _routesRoutes.routes.props.children;
       var routeIterator = routeCollection instanceof Array ? routeCollection : [routeCollection];
+      var initials = this.state.given_name != 'N/A' ? this.transformNameToInitials(this.state.given_name) : 'NA';
 
       return _react2['default'].createElement('nav', { className: 'navbar navbar-trans', role: 'navigation' }, _react2['default'].createElement('div', { classNameName: 'container' }, _react2['default'].createElement('div', { className: 'navbar-header' }, _react2['default'].createElement('button', { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#navbar-collapsible' }, _react2['default'].createElement('span', { className: 'sr-only' }, 'Toggle navigation'), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' })), _react2['default'].createElement('a', { className: 'navbar-brand text-danger', href: '#' }, _react2['default'].createElement('span', null, '<'), _react2['default'].createElement('span', { className: 'brandLabel' }, 'App Header Label'), _react2['default'].createElement('span', null, '>'))), _react2['default'].createElement('div', { className: 'navbar-collapse collapse', id: 'navbar-collapsible' }, _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-left' }, routeIterator.map(function (route) {
         var routeProps = route.props;
         var className = routeName === routeProps.component.displayName ? "active" : "inactive";
 
         if (routeProps.href && routeProps.linkLabel) return _react2['default'].createElement('li', { className: className }, _react2['default'].createElement('a', { href: routeProps.href }, routeProps.icon ? _react2['default'].createElement('i', { className: routeProps.icon }) : undefined, ' ', routeProps.linkLabel));
-      }), _react2['default'].createElement('li', null, ' ')), _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-right' }, _react2['default'].createElement('li', { className: 'userProfile' }, _react2['default'].createElement('span', { className: 'userLabel' }, self.state && self.state.given_name ? 'Hello ' + self.state.given_name : undefined, ' '), _react2['default'].createElement('span', { className: 'fa-stack fa-lg' }, _react2['default'].createElement('i', { className: 'fa fa-square fa-stack-2x' }), _react2['default'].createElement('i', { className: 'fa fa-stack-1x fa-inverse', style: { color: '#222931', fontWeight: '600', fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif' } }, 'ES'))), _react2['default'].createElement('li', null, _react2['default'].createElement('img', { className: 'logoImg', src: '/dist/assets/images/partner_catalyst_logo.png', width: '175' }))))));
+      }), _react2['default'].createElement('li', null, ' ')), _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-right' }, _react2['default'].createElement('li', { className: 'userProfile' }, _react2['default'].createElement('span', { className: 'userLabel' }, self.state && self.state.given_name ? 'Hello ' + self.state.given_name : undefined, ' '), _react2['default'].createElement('span', { className: 'fa-stack fa-lg' }, _react2['default'].createElement('i', { className: 'fa fa-square fa-stack-2x' }), _react2['default'].createElement('i', { className: 'fa fa-stack-1x fa-inverse', style: { color: '#222931', fontWeight: '600', fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif' } }, initials))), _react2['default'].createElement('li', null, _react2['default'].createElement('img', { className: 'logoImg', src: '/dist/assets/images/partner_catalyst_logo.png', width: '175' }))))));
     }
   }]);
 

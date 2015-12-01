@@ -3,10 +3,15 @@ import {routes} from '../routes/routes';
 
 class Header extends Component {
 
-  getInitialState(){
-      let userProfile = window.userProfile;
+  constructor(props) {
+      super(props);
+      let profileName = window.userProfile ? window.userProfile.given_name : 'N/A';
+      this.state = {given_name: profileName};
+  }
 
-      return {given_name: userProfile.given_name || 'N/A'}
+  transformNameToInitials(givenName){
+    let nameSplit = givenName.split(' ');
+    return nameSplit[0].substring(0, 0) + nameSplit[1].substring(0, 0);
   }
 
   render() {
@@ -14,6 +19,7 @@ class Header extends Component {
     let routeName = this.props.routePage;
     let routeCollection = routes.props.children;
     let routeIterator = (routeCollection instanceof Array) ? routeCollection : [routeCollection];
+    let initials = this.state.given_name != 'N/A' ? this.transformNameToInitials(this.state.given_name) : 'NA';
 
     return (
       <nav className="navbar navbar-trans" role="navigation">
@@ -51,7 +57,7 @@ class Header extends Component {
                         <span className="fa-stack fa-lg">
                           <i className="fa fa-square fa-stack-2x"></i>
                           <i className="fa fa-stack-1x fa-inverse" style={{color: '#222931', fontWeight: '600', fontFamily: 'Helvetica Neue,Helvetica,Arial,sans-serif'}}>
-                            ES
+                            {initials}
                           </i>
                         </span>
                       </li>
