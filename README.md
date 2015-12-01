@@ -145,7 +145,7 @@ We're using grunt as our asset pipeline automation framework. Any additional tas
 
 1. bower
 
-######Deployment
+######Continous Integration
 Batteries are included - If you decide to use Travis, this repo comes packaged with travis deployment scripts(.travis.yml) that will deploy your web app builds to Azure on Git push events. Please refer to the ["Getting Started Guide"](https://docs.travis-ci.com/user/getting-started/) if this is your first time using Travis. 
 
 Assumptions
