@@ -64,6 +64,14 @@ module.exports = function (grunt) {
             }]
           }
         },
+        watch: {
+      		src: {
+      			// source files to watch:
+      			files: ['assets/styles/**/*', 'src/**/*.js'],
+      			// When assets are changed:
+      			tasks: ['build']
+      		}
+      	},
         karma: {
           production: {
             configFile: 'karma.conf.js',
@@ -130,5 +138,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.registerTask('test', ['karma:production']);
     grunt.registerTask('test-dev', ['karma:dev']);
+    grunt.registerTask('build-dev', ['watch']);
     grunt.registerTask('build', ['clean', 'test', 'browserify:lib', 'copy', 'uglify:source', 'bower_concat', 'uglify:vendor', 'concat:css', 'cssmin:vendor']);
 };
