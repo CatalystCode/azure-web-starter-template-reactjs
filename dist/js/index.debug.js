@@ -23649,24 +23649,19 @@ var Header = (function (_Component) {
     _classCallCheck(this, Header);
 
     _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).call(this, props);
-    var profileName = window.userProfile ? window.userProfile.given_name : 'N/A';
-    this.state = { given_name: profileName };
+    var firstName = window.userProfile ? window.userProfile.given_name : 'N/A';
+    var lastName = window.userProfile ? window.userProfile.family_name : 'N/A';
+    this.state = { given_name: firstName, family_name: lastName };
   }
 
   _createClass(Header, [{
-    key: 'transformNameToInitials',
-    value: function transformNameToInitials(givenName) {
-      var nameSplit = givenName.split(' ');
-      return nameSplit[0].substring(0, 0) + nameSplit[1].substring(0, 0);
-    }
-  }, {
     key: 'render',
     value: function render() {
       var self = this;
       var routeName = this.props.routePage;
       var routeCollection = _routesRoutes.routes.props.children;
       var routeIterator = routeCollection instanceof Array ? routeCollection : [routeCollection];
-      var initials = this.state.given_name != 'N/A' ? this.transformNameToInitials(this.state.given_name) : 'NA';
+      var initials = this.state.given_name != 'N/A' ? this.state.given_name.substring(0, 0) + this.state.family_name.substring(0, 0) : 'NA';
 
       return _react2['default'].createElement('nav', { className: 'navbar navbar-trans', role: 'navigation' }, _react2['default'].createElement('div', { classNameName: 'container' }, _react2['default'].createElement('div', { className: 'navbar-header' }, _react2['default'].createElement('button', { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#navbar-collapsible' }, _react2['default'].createElement('span', { className: 'sr-only' }, 'Toggle navigation'), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' }), _react2['default'].createElement('span', { className: 'icon-bar' })), _react2['default'].createElement('a', { className: 'navbar-brand text-danger', href: '#' }, _react2['default'].createElement('span', null, '<'), _react2['default'].createElement('span', { className: 'brandLabel' }, 'App Header Label'), _react2['default'].createElement('span', null, '>'))), _react2['default'].createElement('div', { className: 'navbar-collapse collapse', id: 'navbar-collapsible' }, _react2['default'].createElement('ul', { className: 'nav navbar-nav navbar-left' }, routeIterator.map(function (route) {
         var routeProps = route.props;
@@ -23934,7 +23929,11 @@ var SERVICES = {
 
         if (userProfile && userProfile.given_name) return userProfile;
 
-        if (!_configJson2["default"].AAD_AUTH_CLIENTID) throw new Error('AAD Auth Client ID config is not setup in Azure for this instance');
+        if (!_configJson2["default"].AAD_AUTH_CLIENTID || _configJson2["default"].AAD_AUTH_CLIENTID === '') {
+            console.log('AAD Auth Client ID config is not setup in Azure for this instance');
+            return {};
+        }
+
         console.log('AD ID: ' + _configJson2["default"].AAD_AUTH_CLIENTID);
 
         window.config = {

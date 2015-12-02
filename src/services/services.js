@@ -15,8 +15,11 @@ export const SERVICES = {
     if(userProfile && userProfile.given_name)
        return userProfile;
 
-    if(!env_properties.AAD_AUTH_CLIENTID)
-      throw new Error('AAD Auth Client ID config is not setup in Azure for this instance');
+    if(!env_properties.AAD_AUTH_CLIENTID || env_properties.AAD_AUTH_CLIENTID === ''){
+      console.log('AAD Auth Client ID config is not setup in Azure for this instance');
+      return {};
+    }
+
     console.log('AD ID: ' + env_properties.AAD_AUTH_CLIENTID);
 
     window.config = {
