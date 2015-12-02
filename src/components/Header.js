@@ -5,13 +5,9 @@ class Header extends Component {
 
   constructor(props) {
       super(props);
-      let profileName = window.userProfile ? window.userProfile.given_name : 'N/A';
-      this.state = {given_name: profileName};
-  }
-
-  transformNameToInitials(givenName){
-    let nameSplit = givenName.split(' ');
-    return nameSplit[0].substring(0, 0) + nameSplit[1].substring(0, 0);
+      let firstName = window.userProfile ? window.userProfile.given_name : 'N/A';
+      let lastName = window.userProfile ? window.userProfile.family_name : 'N/A';
+      this.state = {given_name: firstName, family_name: lastName};
   }
 
   render() {
@@ -19,7 +15,7 @@ class Header extends Component {
     let routeName = this.props.routePage;
     let routeCollection = routes.props.children;
     let routeIterator = (routeCollection instanceof Array) ? routeCollection : [routeCollection];
-    let initials = this.state.given_name != 'N/A' ? this.transformNameToInitials(this.state.given_name) : 'NA';
+    let initials = this.state.given_name != 'N/A' ? this.state.given_name.substring(0, 0) + this.state.family_name.substring(0, 0) : 'NA';
 
     return (
       <nav className="navbar navbar-trans" role="navigation">
