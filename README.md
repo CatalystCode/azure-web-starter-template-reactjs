@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/CatalystCode/azure-web-starter-template-reactjs.svg?branch=master)](https://travis-ci.org/CatalystCode/azure-web-starter-template-reactjs)<img src="https://cloud.githubusercontent.com/assets/7635865/11383036/781f2cee-92d3-11e5-98b9-91eb7f29e540.png" width="300" height="65"/><br>
+[![Build Status](https://travis-ci.org/CatalystCode/azure-web-starter-template-reactjs.svg?branch=master)](https://travis-ci.org/CatalystCode/azure-web-starter-template-reactjs)<img src="https://cloud.githubusercontent.com/assets/7635865/11536257/95475180-98e5-11e5-9036-6f22ec8c2885.png"  height="165"/><br>
 <img src="https://cloud.githubusercontent.com/assets/7635865/11382863/6505a116-92d2-11e5-965f-33dba073d0a5.png" width="500" height="300"/>
 
 # Starter Template for Dokku Linux Azure Web App 
